@@ -10,7 +10,6 @@ var app = connect()
     .use(connect.json())
     .use(connect.urlencoded())
     .use(function(req, res) {
-        console.log(req.headers.x_filename);
         if (req.method.toUpperCase() == "POST" && req.url == "/upload") {
             var newFile = fs.createWriteStream(upload_folder + req.headers.x_filename);
             var fileBytes = req.headers['content-length'];
