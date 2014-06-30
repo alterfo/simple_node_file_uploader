@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #uploader {
+        display: none;
+        font-weight: bold;
+        text-align: center;
+        padding: 1em 0;
+        margin: 1em 0;
+        color: #555;
+        border: 2px dashed #555;
+        border-radius: 7px;
+        cursor: default;
+    }
+    #uploader.hover {
+        color: #f00;
+        border-color: #f00;
+        border-style: solid;
+        box-shadow: inset 0 3px 4px #888;
+    }
+    form {
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <form action="/upload">
+        <p>Пожалуйста выберите файлы с компьютера</p>
+        <input type="file" id="input" name="files[]" multiple>
+        <p>Или пренесите их сюда:</p>
+        <div id="uploader">
+
+        </div>
+        <div id="submitbutton">
+            <button type="submit">Upload Files</button>
+        </div>
+    </form>
+
+    <div id="preview"></div>
+    <div id="messages">
+        <p>Status Messages</p>
+    </div>
+    <script>
+    function $id(id) {
+        return document.getElementById(id);
+    }
+
+    function out(message) {
+        var m = $id("messages");
+        m.innerHTML = message + m.innerHTML;
+    }
+
+
+    if (window.File && window.FileList && window.FileReader) {
+        Init();
+    }
+
+    function Init() {
+        var input = $id("input"),
+            uploader = $id('uploader'),
+            submitbutton = $id('submitbutton');
+
+        input.addEventListener("change", handleFiles, false);
+
+        var xhr = new XMLHttpRequest();
+        if (xhr.upload) {
+            uploader.addEventListener("dragover", dragover, false);
+            uploader.addEventListener("dragleave", dragover, false);
+            uploader.addEventListener("drop", handleFiles, false);
+            uploader.style.display = "block";
+            submitbutton.style.display = "none";
+        }
+
+    }
+
+    function dragover(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        e.target.className = (e.type == "dragover" ? "hover" : "");
+    }
+
+    function handleFiles(e) {
+        dragover(e);
+        var files = e.target.files || e.dataTransfer.files;
+        for (var i = 0, f; f = files[i]; i++) {
+            parseFile(f);
+            uploadFile(f);
+        }
+    }
+
+    function parseFile(file) {
+        out(
+            "<p>File information: <strong>" + file.name +
+            "</strong> type: <strong>" + file.type +
+            "</strong> size: <strong>" + file.size +
+            "</strong> bytes</p>"
+        );
+
+
+    }
+
+    function uploadFile(file) {
+        var xhr = new XMLHttpRequest();
+        if (xhr.upload /*&& file.type.match(/image.)*/) {
+            xhr.open("POST", "/upload", true);
+            xhr.setRequestHeader("X_FILENAME", file.name);
+            xhr.setRequestHeader("Content-Type", "application/octet-stream");
+            xhr.send(file);
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    if (xhr == 200) {
+                        console.log("files were uploaded");
+                    }
+                }
+            };
+        }
+
+
+    }
+    </script>
+</body>
+
+</html>
