@@ -16,7 +16,7 @@ var app = connect()
             var uploadedBytes = 0;
 
             req.pipe(newFile);
-
+            console.log("started uploading " + req.headers.x_filename);
             req.on('data', function(chunk) {
                 uploadedBytes += chunk.length;
                 var progress = (uploadedBytes / fileBytes) * 100;
