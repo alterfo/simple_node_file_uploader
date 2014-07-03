@@ -1,10 +1,29 @@
 {
-	"name" : "ajax-node-uploader",
-	"description" : "Simple Ajax Node Multiple File D&D Uploader",
-	"version" : "0.0.1",
-	"author" : "Oleg Sidorkin <kalinon7@gmail.com> (http://oleg-sidorkin.ru)",
-	"dependencies" : {
-		"connect" : "3.0.1"
-	},
-	"license" : "MIT"
+  "name": "fileuploader",
+  "version": "0.0.1",
+  "description": "Node.js ajax quick drag & drop file uploader",
+  "main": "server.js",
+  "dependencies": {
+    "connect": "~2.21.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amIwho/simple_node_file_uploader.git"
+  },
+  "keywords": [
+    "node",
+    "upload",
+    "file",
+    "ajax"
+  ],
+  "author": "Oleg Sidorkin <kalinon7@gmail.com> (http://oleg-sidorkin.ru)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amIwho/simple_node_file_uploader/issues"
+  }
 }

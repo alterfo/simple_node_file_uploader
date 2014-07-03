@@ -1,0 +1,21 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\_utils\\node\\\\node.exe',
+1 verbose cli   'C:\\_utils\\node\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
+2 info using npm@1.3.9
+3 info using node@v0.10.22
+4 verbose node symlink C:\_utils\node\\node.exe
+5 error Error: ENOENT, open 'C:\Sites\fileuploader\app\package.json'
+6 error If you need help, you may report this log at:
+6 error     <http://github.com/isaacs/npm/issues>
+6 error or email it to:
+6 error     <npm-@googlegroups.com>
+7 error System Windows_NT 6.1.7601
+8 error command "C:\\_utils\\node\\\\node.exe" "C:\\_utils\\node\\node_modules\\npm\\bin\\npm-cli.js" "start"
+9 error cwd C:\Sites\fileuploader\app
+10 error node -v v0.10.22
+11 error npm -v 1.3.9
+12 error path C:\Sites\fileuploader\app\package.json
+13 error code ENOENT
+14 error errno 34
+15 verbose exit [ 34, true ]
