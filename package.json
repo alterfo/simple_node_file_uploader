@@ -1,0 +1,10 @@
+{
+	"name" : "ajax-node-uploader",
+	"description" : "Simple Ajax Node Multiple File D&D Uploader",
+	"version" : "0.0.1",
+	"author" : "Oleg Sidorkin <kalinon7@gmail.com> (http://oleg-sidorkin.ru)",
+	"dependencies" : {
+		"connect" : "3.0.1"
+	},
+	"license" : "MIT"
+}
